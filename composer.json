@@ -62,6 +62,7 @@
         }
     },
     "require-dev": {
-        "symfony/maker-bundle": "^1.20"
+        "symfony/maker-bundle": "^1.20",
+        "symfony/profiler-pack": "^1.0"
     }
 }
