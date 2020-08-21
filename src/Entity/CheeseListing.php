@@ -20,7 +20,9 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ApiResource(
  *     collectionOperations={"GET", "POST"},
  *     itemOperations={
- *          "GET",
+ *          "GET"={
+ *              "normalization_context"={"groups"={"cheese_listing:read", "cheese_listing:item:get"}}
+ *          },
  *          "PUT"
  *     },
  *     normalizationContext={"groups"={"cheese_listing:read"}, "swagger_definition_name"="Read"},
@@ -48,7 +50,7 @@ class CheeseListing
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"cheese_listing:read", "cheese_listing:write"})
+     * @Groups({"cheese_listing:read", "user:read", "cheese_listing:write"})
      * @Assert\NotBlank()
      * @Assert\Length(
      *     min=2,
@@ -69,7 +71,7 @@ class CheeseListing
      * Price in cents
      *
      * @ORM\Column(type="integer")
-     * @Groups({"cheese_listing:read", "cheese_listing:write"})
+     * @Groups({"cheese_listing:read", "user:read", "cheese_listing:write"})
      * @Assert\NotBlank()
      */
     private $price;
